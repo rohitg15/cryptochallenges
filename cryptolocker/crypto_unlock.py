@@ -28,15 +28,6 @@ if __name__ == "__main__":
 
     # read ciphertext from input file
     ciphertext = open(input_filename, "r").read()
-
-    #msg = "A" * 64
-
-    #cipher = AESCipher(msg)
-    #m = cipher._pad(msg)
-    #print "padded message : %s, size %d" % (m, len(m))
-    #for ch in m:
-    #    print hex(ord(ch))
-    #exit(0)
     
     # build sha256 hash list for all 2 byte combinations
     hashes, key_map = get_sha256_2bytes()
@@ -51,7 +42,7 @@ if __name__ == "__main__":
         for key in hashes:
             cipher = AESCipher(key)
             decrypted_data = cipher.decrypt(current_ciphertext)
-            # for the 3 outermost layers, we can expect the padding to be 16 bytes of 0x20
+            # for the 3 outermost layers, we can expect the padding to be 16 bytes of 0x10
             # this is because the plaintext for every round (other than the very first) is the 
             # ciphertext (multiple of 32 bytes) + iv (16 bytes) combination from the previous round.
             if layer != 3:
