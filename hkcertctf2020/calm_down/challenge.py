@@ -1,18 +1,13 @@
 import sys
 
-# https://hackmd.io/@hoifanrd/SyeYX-HFP
-
-
 # Challenge written by Mystiz.
 
 import base64
-import binascii
-import hashlib
-import os
 from Crypto.PublicKey import RSA
 from Crypto.Util.number import bytes_to_long, long_to_bytes
 
 
+# replicate challenge locally for testing
 class RSAKey:
     def __init__(self, e, d, n):
         self.e = e
